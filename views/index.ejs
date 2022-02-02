@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<span id="view-second"></span>
+<span id="quote"></span>
+</body>
+<style>
+    html, body {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        transition: background-color 1s;
+        margin: 0;
+        padding: 0;
+    }
+
+    #view-second {
+        margin: auto;
+        font-size: 100px;
+        text-shadow: -2px 0 #FFFFFF, 0 2px #FFFFFF, 2px 0 #FFFFFF, 0 -2px #FFFFFF;
+    }
+
+    #quote {
+        position: absolute;
+        margin: auto;
+        font-size: 100px;
+        text-shadow: -2px 0 #FFFFFF, 0 2px #FFFFFF, 2px 0 #FFFFFF, 0 -2px #FFFFFF;
+        animation: highlight 0.01s linear infinite alternate;
+    }
+
+    @keyframes highlight {
+        from {
+            color: red;
+        }
+        to {
+            color: black;
+        }
+    }
+</style>
+<script>
+    let second = 0;
+    const viewSecond = document.querySelector("#view-second");
+    const quote = document.querySelector("#quote");
+    const body = document.querySelector("body");
+    viewSecond.innerHTML = second;
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple'];
+    const concentration = '집중하세요!!';
+    const duration = 5;
+    setInterval(() => {
+        second++;
+        viewSecond.innerHTML = second;
+        body.style.backgroundColor = colors[second % 7];
+        if (Math.floor(Math.random() * 100) === 0 && quote.innerHTML === '') {
+            quote.innerHTML = concentration;
+            setTimeout(() => {
+                quote.innerHTML = '';
+            }, duration * 1000);
+        }
+    }, 1000);
+</script>
+</html>
