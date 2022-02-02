@@ -27,7 +27,7 @@
     #quote {
         position: absolute;
         margin: auto;
-        font-size: 100px;
+        font-size: 200px;
         text-shadow: -2px 0 #FFFFFF, 0 2px #FFFFFF, 2px 0 #FFFFFF, 0 -2px #FFFFFF;
         animation: highlight 0.01s linear infinite alternate;
     }
@@ -54,7 +54,7 @@
         second++;
         viewSecond.innerHTML = second;
         body.style.backgroundColor = colors[second % 7];
-        if (Math.floor(Math.random() * 100) === 0 && quote.innerHTML === '') {
+        if (Math.floor(Math.random() * 100) < 10 && quote.innerHTML === '') {
             quote.innerHTML = concentration;
             setTimeout(() => {
                 quote.innerHTML = '';
